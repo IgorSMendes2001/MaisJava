@@ -1,9 +1,12 @@
 import java.util.ArrayList;
-
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
 public class TesteUtil {
     public static void main(String[] args) {
-        ArrayList <Conta> lista = new ArrayList<Conta>();//lista de array com generics <> podendo especificar quais tipos de referências podem ser guardadas no ArrayList
-        
+        // ArrayList <Conta> lista = new ArrayList<Conta>();//lista de array com generics <> podendo especificar quais tipos de referências podem ser guardadas no ArrayList
+        List<Conta> lista= new ArrayList<Conta>();//List é uma interface que implementa os métodos do LinkedList e ArrayList. Vector é threadsafe,podendo implementar mais de um método main
+
         Conta cc=new ContaCorrente(22, 11);
         lista.add(cc); //adiciona valores na lista
         Conta cc2=new ContaCorrente(22, 22);
