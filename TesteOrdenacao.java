@@ -1,12 +1,10 @@
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Consumer;
 
-    public class Teste {
+public class TesteOrdenacao {
 
     public static void main(String[] args) {
 
@@ -40,31 +38,23 @@ import java.util.function.Consumer;
             lista.add(cc2);
             lista.add(cc3);
             lista.add(cc4);
-           
-            lista.sort((c1, c2)->Integer.compare(c1.getNumero(), c2.getNumero()));
-            Comparator<Conta> comp=(Conta c1, Conta c2)-> {
-                    String nomeC1=c1.getTitular().getNome();
-                    String nomeC2=c2.getTitular().getNome();
-                    return nomeC1.compareTo(nomeC2);               
-                 };
-                 lista.sort(comp);
-                 lista.forEach((Conta conta) -> System.out.println(conta + ", " +conta.getTitular().getNome()));
-                //  lista.forEach(Conta conta); {
-                //         System.out.println(conta + ", " + conta.getTitular().getNome());
-                //      }
-           
+            // for (Conta conta : lista) {
+            //     System.out.println(conta);
+            // }
+            // NumeroCompara comparador=new NumeroCompara();
+            // TitularCompara titularComparator=new TitularCompara();
+            lista.sort(new TitularCompara());//Serve para ordenar as listas de acordo com o parâmetro desejado;
+
+            Collections.sort(lista, new NumeroCompara());
+            Collections.sort(lista);
+            
+
+           System.out.println("---------------------------->");
+            for (Conta conta : lista) {
+                System.out.println(conta + ", " +conta.getTitular().getNome());
+            }
     }
 
-}
-
-class NumeroCompara implements Comparator <Conta>{
-
-    @Override
-    public int compare(Conta c1, Conta c2) {
-        return Integer.compare(c1.getNumero(), c2.getNumero());
-    
-    }
-    
 }
     class TitularCompara implements Comparator<Conta>{
 
@@ -77,4 +67,19 @@ class NumeroCompara implements Comparator <Conta>{
         }
 
     }
-  
+    class NumeroCompara implements Comparator <Conta>{
+
+        @Override
+        public int compare(Conta c1, Conta c2) {
+            return Integer.compare(c1.getNumero(), c2.getNumero());
+            // return c1.getNumero()-c2.getNumero();
+        //     if(c1.getNumero()<c2.getNumero()){
+        //         return -1;
+        //     }
+        //     if(c1.getNumero()>c2.getNumero()){
+        //         return 1;
+        //     }
+        //     return 0;
+        }
+        
+    }

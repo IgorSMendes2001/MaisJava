@@ -1,3 +1,4 @@
+import java.util.Comparator;
 
 /**
  * Classe abstrata que representa a moldura de uma conta
@@ -6,7 +7,7 @@
  */
 
 
-public abstract class Conta {
+public abstract class Conta extends Object implements Comparable<Conta>{
 
     protected double saldo;
     private int agencia;
@@ -89,6 +90,10 @@ public abstract class Conta {
             return false;
         }
         return true;
+    }
+    @Override
+    public int compareTo(Conta o) {
+        return Double.compare(this.saldo, o.saldo);
     }
 
     @Override
